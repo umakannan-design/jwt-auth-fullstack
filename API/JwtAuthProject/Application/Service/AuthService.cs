@@ -33,7 +33,7 @@ namespace Application.Service
 
             if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
             {
-                throw new Exception("Invalid Credentials");
+                return null;
             }
 
             return _jwtService.GenerateToken(user);
